@@ -1,0 +1,33 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Dob</th>
+    <th>Profilepicture</th>
+    <th>Gender</th>
+    <th>Languages</th>
+    <th>Aboutme</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profiles.each do |profile| %>
+  <tr>
+    <td><%= profile.name %></td>
+    <td><%= profile.dob %></td>
+    <td><%= profile.profilepicture %></td>
+    <td><%= profile.gender %></td>
+    <td><%= profile.languages %></td>
+    <td><%= profile.aboutme %></td>
+    <td><%= link_to 'Show', profile %></td>
+    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Profile', new_profile_path %>

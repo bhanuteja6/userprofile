@@ -1,0 +1,59 @@
+<%= javascript_include_tag('jquery.min', 'jquery.datepick')%>
+<%= stylesheet_link_tag('jquery.datepick')%>
+
+
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.text_field :dob, :id => :popupDatepicker %>
+  </div>
+  <div class="field">
+    <%= f.label :profilepicture %><br />
+   <%= f.file_field :photo %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.radio_button :gender, "Male" %> Male
+    <%= f.radio_button :gender, "Female" %> Female
+  </div>
+  <div class="field">
+    <%= f.label :languages %><br />
+   Telugu <%= f.check_box :languages, { :multiple => true }, 'telugu',nil %> <br>
+    Hindi <%= f.check_box :languages, { :multiple => true }, 'hindi',nil %> <br>
+English    <%= f.check_box :languages, { :multiple => true }, 'english',nil %> 
+
+  </div>
+  <div class="field">
+    <%= f.label :aboutme %><br />
+    <%= f.text_area :aboutme %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+ <script>
+$(function() {
+    $('#popupDatepicker').datepick({dateFormat: 'mm-dd-yyyy'});
+        
+});
+
+</script>
+
+
