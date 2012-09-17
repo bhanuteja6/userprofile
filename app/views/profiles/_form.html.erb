@@ -1,6 +1,7 @@
 <%= javascript_include_tag('jquery.min', 'jquery.datepick')%>
 <%= stylesheet_link_tag('jquery.datepick')%>
 
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
 
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
@@ -36,12 +37,12 @@
     <%= f.label :languages %><br />
    Telugu <%= f.check_box :languages, { :multiple => true }, 'telugu',nil %> <br>
     Hindi <%= f.check_box :languages, { :multiple => true }, 'hindi',nil %> <br>
-English    <%= f.check_box :languages, { :multiple => true }, 'english',nil %> 
+English    <%= f.check_box :languages, { :multiple => true }, 'english',nil %>
 
   </div>
   <div class="field">
     <%= f.label :aboutme %><br />
-    <%= f.text_area :aboutme %>
+    <%= f.text_area :aboutme, :cols=>"50", :rows=>"15"%>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -51,9 +52,13 @@ English    <%= f.check_box :languages, { :multiple => true }, 'english',nil %>
  <script>
 $(function() {
     $('#popupDatepicker').datepick({dateFormat: 'mm-dd-yyyy'});
-        
+       
 });
 
+</script>
+
+<script type="text/javascript">
+       bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>
 
 
